@@ -55,12 +55,17 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
+    private int mSelectedIndex;
+
     public NavigationDrawerFragment() {
     }
 
-    public void setSelectedIndex(int index) {
-        mCurrentSelectedPosition = index;
-        mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+    public void setDrawerEnabled(boolean isEnabled, int index) {
+        mDrawerLayout.setDrawerLockMode(isEnabled
+                ? DrawerLayout.LOCK_MODE_UNLOCKED
+                : DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        mDrawerToggle.setDrawerIndicatorEnabled(isEnabled);
+        mSelectedIndex = index;
     }
 
     @Override
@@ -230,8 +235,18 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return mDrawerToggle.onOptionsItemSelected(item) ||
-                super.onOptionsItemSelected(item);
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
+        if (item.getItemId() == android.R.id.home) {
+            getFragmentManager().popBackStack();
+            selectItem(mSelectedIndex);
+            setDrawerEnabled(true, 0);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
 
     }
 

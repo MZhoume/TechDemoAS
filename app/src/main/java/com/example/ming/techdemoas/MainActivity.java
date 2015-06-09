@@ -2,6 +2,7 @@ package com.example.ming.techdemoas;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -14,6 +15,7 @@ public class MainActivity extends ActionBarActivity
 
     private NavigationDrawerFragment NavigationDrawerFragment;
     private int fragmentIndex;
+    private int mBackIndex;
 
     /**
      * Used to store the last screen title. For use in {@link # restoreActionBar()}.
@@ -41,24 +43,20 @@ public class MainActivity extends ActionBarActivity
         }
     }
 
-    public void selectFragment(int position) {
-        NavigationDrawerFragment.setSelectedIndex(position);
-
-        fragmentIndex = position;
-
-        IUserFragment frag = (IUserFragment) FragmentLocator.Get(position);
-        if (frag != null) {
-            mTitle = frag.GetTitle();
-        }
-        restoreActionBar();
-    }
-
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .hide(FragmentLocator.Get(fragmentIndex))
+        FragmentTransaction trans = fragmentManager.beginTransaction();
+
+        if (position == 2) {
+            trans.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_top,
+                    R.anim.abc_slide_in_top, R.anim.abc_slide_out_bottom)
+                    .addToBackStack(String.valueOf(mBackIndex++));
+            NavigationDrawerFragment.setDrawerEnabled(false, fragmentIndex);
+        }
+
+        trans.hide(FragmentLocator.Get(fragmentIndex))
                 .show(FragmentLocator.Get(position))
                 .commit();
 
