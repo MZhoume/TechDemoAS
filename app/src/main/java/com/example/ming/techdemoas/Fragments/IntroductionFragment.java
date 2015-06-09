@@ -40,12 +40,10 @@ public class IntroductionFragment extends Fragment implements IUserFragment {
             @Override
             public void onBackStackChanged() {
                 if (isInSettings) {
-                    ((MainActivity) getActivity()).getNavigationDrawerFragment().setSelectedIndex(0);
-                    ((MainActivity) getActivity()).setCurrentPosition(0);
+                    ((MainActivity) getActivity()).selectFragment(0);
                     isInSettings = false;
                 } else {
-                    ((MainActivity) getActivity()).getNavigationDrawerFragment().setSelectedIndex(2);
-                    ((MainActivity) getActivity()).setCurrentPosition(2);
+                    ((MainActivity) getActivity()).selectFragment(2);
                     isInSettings = true;
                 }
             }

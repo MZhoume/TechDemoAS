@@ -23,9 +23,9 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
-            FragmentLocator.setFragmentManager(getSupportFragmentManager());
-
             super.onCreate(null);
+
+            FragmentLocator.setFragmentManager(getSupportFragmentManager());
             setContentView(R.layout.activity_main);
 
             NavigationDrawerFragment = (NavigationDrawerFragment)
@@ -41,8 +41,16 @@ public class MainActivity extends ActionBarActivity
         }
     }
 
-    public void setCurrentPosition(int currPos) {
-        fragmentIndex = currPos;
+    public void selectFragment(int position) {
+        NavigationDrawerFragment.setSelectedIndex(position);
+
+        fragmentIndex = position;
+
+        IUserFragment frag = (IUserFragment) FragmentLocator.Get(position);
+        if (frag != null) {
+            mTitle = frag.GetTitle();
+        }
+        restoreActionBar();
     }
 
     @Override
@@ -54,7 +62,7 @@ public class MainActivity extends ActionBarActivity
                 .show(FragmentLocator.Get(position))
                 .commit();
 
-        setCurrentPosition(position);
+        fragmentIndex = position;
 
         IUserFragment frag = (IUserFragment) FragmentLocator.Get(position);
         if (frag != null) {
@@ -75,11 +83,5 @@ public class MainActivity extends ActionBarActivity
      */
     public com.example.ming.techdemoas.NavigationDrawerFragment getNavigationDrawerFragment() {
         return NavigationDrawerFragment;
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        FragmentLocator.InvalidateAll();
     }
 }
