@@ -78,8 +78,8 @@ public class MainActivity extends ActionBarActivity
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    public void onBackPressed() {
+        super.onBackPressed();
         FragmentLocator.InvalidateAll();
     }
 }
