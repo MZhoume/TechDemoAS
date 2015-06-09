@@ -54,8 +54,8 @@ public class IntroductionFragment extends Fragment implements IUserFragment {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_fade_out,
-                                R.anim.abc_fade_in, R.anim.abc_slide_out_bottom)
+                        .setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_top,
+                                R.anim.abc_slide_in_top, R.anim.abc_slide_out_bottom)
                         .hide(FragmentLocator.Get(0))
                         .show(FragmentLocator.Get(2))
                         .addToBackStack("Settings")
