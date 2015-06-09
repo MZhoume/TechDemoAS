@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TechDemoAS</string>
+
+    <string name="titleIntroduction">Introduction</string>
+    <string name="titleHome">Home</string>
+    <string name="titleSettings">Settings</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="actionSettings">Settings</string>
+</resources>
