@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -84,6 +85,16 @@ public class NavigationDrawerFragment extends Fragment {
 
         // Select either the default item (0) or the last selected item.
         selectItem(mCurrentSelectedPosition);
+
+        getFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                if (getFragmentManager().getBackStackEntryCount() == 0) {
+                    selectItem(mSelectedIndex);
+                    setDrawerEnabled(true, 0);
+                }
+            }
+        });
     }
 
     @Override
@@ -241,8 +252,6 @@ public class NavigationDrawerFragment extends Fragment {
 
         if (item.getItemId() == android.R.id.home) {
             getFragmentManager().popBackStack();
-            selectItem(mSelectedIndex);
-            setDrawerEnabled(true, 0);
             return true;
         }
 
