@@ -22,14 +22,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="IP Address:"
+            android:text="@string/txtIpAddr"
             android:textAppearance="?android:attr/textAppearanceMedium"/>
 
         <EditText
             android:id="@+id/txtIpAddress"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:hint="@string/txtIPAddrHint"/>
 
     </LinearLayout>
 
@@ -48,14 +49,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Port Number:"
+            android:text="@string/txtPortNumber"
             android:textAppearance="?android:attr/textAppearanceMedium"/>
 
         <EditText
             android:id="@+id/txtPort"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:hint="@string/txtPortNumberHint"
+            android:inputType="number"/>
 
     </LinearLayout>
 
@@ -66,8 +69,7 @@
         android:layout_below="@+id/linearBottom"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:enabled="false"
-        android:text="Start"/>
+        android:text="@string/txtBtnStart"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -77,7 +79,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/btnStart"
         android:layout_marginTop="20dp"
-        android:text="Messages from socket ws://"
+        android:text="@string/txtIPDescription1"
         android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <TextView
@@ -100,7 +102,8 @@
         android:layout_toEndOf="@+id/txtIpAddressBtm"
         android:layout_toRightOf="@+id/txtIpAddressBtm"
         android:text=":"
-        android:textAppearance="?android:attr/textAppearanceSmall"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText"/>
 
     <TextView
         android:id="@+id/txtPortBtm"

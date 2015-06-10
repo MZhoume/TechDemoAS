@@ -44,7 +44,7 @@ public class DataModelAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.data_model_display, null);
+            convertView = mInflater.inflate(R.layout.data_model_display, parent);
 
             LinearLayout linearNames = (LinearLayout) convertView.findViewById(R.id.linearDMNames);
             LinearLayout linearValues = (LinearLayout) convertView.findViewById(R.id.linearDMValues);

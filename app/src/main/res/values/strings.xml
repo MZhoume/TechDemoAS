@@ -9,4 +9,13 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="actionSettings">Settings</string>
+    <string name="txtIpAddr">IP Address:</string>
+    <string name="txtIPAddrHint">IP Address</string>
+    <string name="txtPortNumber">Port Number:</string>
+    <string name="txtBtnStart">Start Listening</string>
+    <string name="txtIPDescription1">Messages from socket ws://</string>
+    <string name="txtIntroductionTitle">Introduction</string>
+    <string name="txtIntroductionBefore">Please open settings pane for connecting to the server.</string>
+    <string name="txtIntroductionBtn">Go to settings</string>
+    <string name="txtPortNumberHint">Port Number</string>
 </resources>

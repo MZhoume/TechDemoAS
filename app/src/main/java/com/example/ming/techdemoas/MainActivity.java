@@ -15,7 +15,6 @@ public class MainActivity extends ActionBarActivity
 
     private NavigationDrawerFragment NavigationDrawerFragment;
     private int fragmentIndex;
-    private int mBackIndex;
 
     /**
      * Used to store the last screen title. For use in {@link # restoreActionBar()}.
@@ -49,10 +48,10 @@ public class MainActivity extends ActionBarActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction trans = fragmentManager.beginTransaction();
 
-        if (position == 2) {
+        if (FragmentLocator.isAnimNeeded(position)) {
             trans.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_top,
                     R.anim.abc_slide_in_top, R.anim.abc_slide_out_bottom)
-                    .addToBackStack(String.valueOf(mBackIndex++));
+                    .addToBackStack("S");
             NavigationDrawerFragment.setDrawerEnabled(false, fragmentIndex);
         }
 

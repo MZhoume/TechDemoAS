@@ -39,4 +39,8 @@ public class FragmentLocator {
             return null;
         }
     }
+
+    public static boolean isAnimNeeded(int pos) {
+        return pos == 2;
+    }
 }
