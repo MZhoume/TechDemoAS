@@ -5,12 +5,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.ming.techdemoas.Fragments.IUserFragment;
 
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     private NavigationDrawerFragment NavigationDrawerFragment;
@@ -70,9 +70,11 @@ public class MainActivity extends ActionBarActivity
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+        //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle(mTitle);
+        }
     }
 
     /**
